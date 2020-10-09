@@ -16,6 +16,7 @@ gem "jekyll", "~> 4.0.0"
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-seo-tag", "~> 2.6"
+  gem "jekyll-datapage-generator", "~> 1.3"
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
