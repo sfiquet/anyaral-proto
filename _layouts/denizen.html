@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<h1>{{page.title}}</h1>
+<p>{{page.tagline}}</p>
+<ul>
+  {%- for type in page.types -%}
+    <li>{{type}}</li>
+  {%- endfor -%}
+</ul>
+
+<ul>
+  <li><span>Movement</span> <span>{{ page.movement | formatStat: '"' }}</span></li>
+  <li><span>Attack</span> <span>{{ page.attack | formatStat }}</span></li>
+  <li><span>Support</span> <span>{{ page.support | formatStat }}</span></li>
+  <li><span>Save</span> <span>{{ page.save | formatStat: '+' }}</span></li>
+  <li><span>CR</span> <span>{{ page.commandRange | formatStat: '"' }}</span></li>
+  {%- if page.stamina != 0 -%}
+    <li><span>Stamina</span> <span>{{ page.stamina | formatStat }}</span></li>
+  {%- endif -%}
+  <li><span>Size</span> <span>{{ page.size | formatSize }}</span></li>
+</ul>
+
+<p><span>Cost</span> <span>{{page.cost}}</span></p>
