@@ -3,24 +3,26 @@
 {%- assign races = site.data.races_list.data | where: "category", "game" -%}
 {%- assign racesByTitle = races | group_by_exp: "race", "race | formatRace" | sort: "name" -%}
 
-<ul class="post-list">
-  {%- for raceGroup in racesByTitle -%}
-    {%- assign creatureGroup = creaturesByRace | where: "name", raceGroup.items[0].code | first -%}
+<nav>
+  <ul class="hier-nav-list">
+    {%- for raceGroup in racesByTitle -%}
+      {%- assign creatureGroup = creaturesByRace | where: "name", raceGroup.items[0].code | first -%}
 
-    {%- if creatureGroup -%}
-      <li>
-        <button>{{raceGroup.name}}</button>
-        <ul>
-          {%- assign sortedCreatures = creatureGroup.items | sort: "name" -%}
-          {%- for creature in sortedCreatures -%}
-            <li>
-              <a class="post-link" href="{{ creature.code | datapage_url: 'denizens' }}">
-                {{ creature.name }}
-              </a>
-            </li>
-          {%- endfor -%}
-        </ul>
-      </li>
-    {%- endif -%}
-  {%- endfor -%}
-</ul>
+      {%- if creatureGroup -%}
+        <li>
+          <button>{{raceGroup.name}}</button>
+          <ul>
+            {%- assign sortedCreatures = creatureGroup.items | sort: "name" -%}
+            {%- for creature in sortedCreatures -%}
+              <li>
+                <a href="{{ creature.code | datapage_url: 'denizens' }}">
+                  {{ creature.name }}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</nav>
