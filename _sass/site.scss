@@ -1,6 +1,15 @@
-nav a, button {
-  min-width: 48px;
-  min-height: 48px;
+$tap-size: 48px;
+
+nav a, summary, button {
+  box-sizing: border-box;
+  min-width: $tap-size;
+  min-height: $tap-size;
+  display: flex;
+  align-items: center;
+}
+
+.side-nav {
+  max-width: 20rem;
 }
 
 .hier-nav-list {
@@ -12,16 +21,14 @@ nav a, button {
     border-top: 1px solid $background-color;
     border-bottom: 1px solid $background-color;
     
-    > button {
-      display: block;
+    summary {
       width:  100%;
       font-size: 1em;
       font-weight: bold;
-      padding: .5rem;
-      border: none;
+      padding: 0 .25rem;
     }
 
-    > ul {
+    ul {
       margin-left: 0;
       list-style: none;
       max-width: 20em;
@@ -30,9 +37,7 @@ nav a, button {
       > li {
 
         > a {
-          display: flex;
-          padding: 0 .5rem;
-          align-items: center;
+          padding: 0 .5rem 0 2rem;
         }
       }
     }
