@@ -4,4 +4,10 @@
 
 layout: home
 ---
-Welcome to the prototype's home page!
+Welcome!
+
+This site is a fan-made reference app for the game [World of Twilight](http://worldoftwilight.com).
+
+Features currently available:
+
+- [Denizens of Anyaral](/denizens/)

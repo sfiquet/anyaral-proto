@@ -1,9 +1,17 @@
+---
+layout: default
+title: Denizens
+permalink: /denizens/
+---
+<h1>{{ page.title }}</h1>
+
 {%- assign creaturesByRace = site.data.creatures_list.data | where: "category", "game" | group_by: "race" -%}
 
 {%- assign races = site.data.races_list.data | where: "category", "game" -%}
 {%- assign racesByTitle = races | group_by_exp: "race", "race | formatRace" | sort: "name" -%}
 
-<nav class="side-nav">
+<h2 id="nav-label" class="sr-only">Denizen selection</h2>
+<nav class="side-nav" role="navigation" aria-labelledby="nav-label">
   <ul class="hier-nav-list">
     {%- for raceGroup in racesByTitle -%}
       {%- assign creatureGroup = creaturesByRace | where: "name", raceGroup.items[0].code | first -%}
@@ -11,12 +19,12 @@
       {%- if creatureGroup -%}
         <li>
           <details>
-            <summary>{{raceGroup.name}}</summary>
+            <summary><h3>{{raceGroup.name}}</h3></summary>
             <ul>
               {%- assign sortedCreatures = creatureGroup.items | sort: "name" -%}
               {%- for creature in sortedCreatures -%}
                 <li>
-                  <a href="{{ creature.code | datapage_url: 'denizens' }}">
+                  <a href="{{ creature.code | datapage_url: '/denizens' }}">
                     {{ creature.name }}
                   </a>
                 </li>
