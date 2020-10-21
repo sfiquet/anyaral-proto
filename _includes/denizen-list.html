@@ -1,0 +1,11 @@
+<ul class="post-list">
+  {%- for creature in site.data.creatures_list.data -%}
+    {%- if creature.category == 'game' -%}
+      <li>
+        <a class="post-link" href="{{ creature.code | datapage_url: 'denizens' }}">
+          {{ creature.name | escape }}
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul>
