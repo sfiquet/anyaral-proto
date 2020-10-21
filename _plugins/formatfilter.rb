@@ -1,5 +1,5 @@
 module Jekyll
-  module StatFilter
+  module FormatFilter
     VALUE_SPECIAL = 999999
     VALUE_DASH = 999998
     # the following are currently not used in stats
@@ -39,7 +39,11 @@ module Jekyll
       end
     end
 
+    def formatRace(race)
+      race['culture'].empty? ? "#{race['theme']}" : "#{race['culture']} &mdash; #{race['theme']}"
+    end
+
   end
 end
 
-Liquid::Template.register_filter(Jekyll::StatFilter)
+Liquid::Template.register_filter(Jekyll::FormatFilter)
