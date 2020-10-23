@@ -21,7 +21,7 @@ layout: default
   <li><span>Size</span> <span>{{ page.size | formatSize }}</span></li>
 </ul>
 
-<p><span>Cost</span> <span>{{page.cost}}</span></p>
+<p><span>Cost</span> <span>{{ page.cost | formatStat }}</span></p>
 
 {%- assign race = site.data.races_list.data | where: "code", page.race | first | formatRace -%}
 <p>{{ race }}</p>
