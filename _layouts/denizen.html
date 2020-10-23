@@ -22,3 +22,6 @@ layout: default
 </ul>
 
 <p><span>Cost</span> <span>{{page.cost}}</span></p>
+
+{%- assign race = site.data.races_list.data | where: "code", page.race | first | formatRace -%}
+<p>{{ race }}</p>
