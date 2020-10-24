@@ -1,0 +1,10 @@
+<ul>
+  {%- for abilityChunks in include.abilities -%}
+    {%- assign found = site.data.abilities_list.data | where: "code", abilityChunks[0] -%}
+    {%- if found.size > 0 -%}
+      {%- assign ability = found | first -%}
+
+      <li>{{ ability | formatAbility: abilityChunks[1], abilityChunks[2] }}</li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul>

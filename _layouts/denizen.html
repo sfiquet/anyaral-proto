@@ -30,17 +30,30 @@ layout: default
 
     <section>
       <h2>Abilities</h2>
-      <ul>
-        {%- for abilityChunks in page.abilities -%}
-          {%- assign found = site.data.abilities_list.data | where: "code", abilityChunks[0] -%}
-          {%- if found.size > 0 -%}
-            {%- assign ability = found | first -%}
 
-            <li>{{ ability | formatAbility: abilityChunks[1], abilityChunks[2] }}</li>
-          {%- endif -%}
-        {%- endfor -%}
-      </ul>
+      {%- include abilities.html abilities=page.abilities -%}
     </section>
+
+    {%- if page.rangedWeapon != "" -%}
+      {%- assign found = site.data.ranged_weapons_list.data | where: "code", page.rangedWeapon -%}
+      {%- assign ranged = found | first -%}
+
+      <section>
+        <h2>{{ranged.name}}</h2>
+        <h3>Stats</h3>
+        <ul>
+          <li><span>Movement</span> <span>{{ ranged.movement | formatStat: '"' }}</span></li>
+          <li><span>Range</span> <span>{{ ranged.range | formatStat: '"' }}</span></li>
+          <li><span>Attack</span> <span>{{ ranged.attack | formatStat }}</span></li>
+        </ul>
+
+        {%- if ranged.abilities.size > 0 -%}
+          <h3>Abilities</h3>
+          {%- include abilities.html abilities=ranged.abilities -%}
+        {%- endif -%}
+
+      </section>
+    {%- endif -%}
 
     <footer>
       {%- assign race = site.data.races_list.data | where: "code", page.race | first | formatRace -%}
