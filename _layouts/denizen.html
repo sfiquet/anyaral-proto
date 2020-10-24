@@ -21,7 +21,19 @@ layout: default
   <li><span>Size</span> <span>{{ page.size | formatSize }}</span></li>
 </ul>
 
-<p><span>Cost</span> <span>{{ page.cost | formatStat }}</span></p>
+<h2>Abilities</h2>
+<ul>
+  {%- for abilityChunks in page.abilities -%}
+    {%- assign found = site.data.abilities_list.data | where: "code", abilityChunks[0] -%}
+    {%- if found.size > 0 -%}
+      {%- assign ability = found | first -%}
+
+      <li>{{ ability | formatAbility: abilityChunks[1], abilityChunks[2] }}</li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul>
 
 {%- assign race = site.data.races_list.data | where: "code", page.race | first | formatRace -%}
 <p>{{ race }}</p>
+
+<p><span>Cost</span> <span>{{ page.cost | formatStat }}</span></p>

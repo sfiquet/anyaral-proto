@@ -43,6 +43,28 @@ module Jekyll
       race['culture'].empty? ? "#{race['theme']}" : "#{race['culture']} &mdash; #{race['theme']}"
     end
 
+    def formatStaminaCost(cost)
+      costString = ""
+      cost.times do
+        costString += "*"
+      end
+      costString
+    end
+
+    def formatAbility(ability, param1, param2)
+      name = ability['name']
+      staminaCost = formatStaminaCost(ability['staminaCost'])
+      
+      details = ""
+      unless param1.empty?
+        params = param2.empty? ? param1 : "#{param1}, #{param2}"
+        details = "(#{params})"
+      end
+
+      type = "[#{ability['type'][0]}]"
+      result = "#{name}#{staminaCost} #{details}#{type}"
+    end
+
   end
 end
 
