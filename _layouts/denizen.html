@@ -28,11 +28,13 @@ layout: default
       </ul>
     </section>
 
-    <section>
-      <h2>Abilities</h2>
+    {%- if page.abilities.size > 0 -%}
+      <section>
+        <h2>Abilities</h2>
 
-      {%- include abilities.html abilities=page.abilities -%}
-    </section>
+        {%- include abilities.html abilities=page.abilities -%}
+      </section>
+    {%- endif -%}
 
     {%- if page.rangedWeapon != "" -%}
       {%- assign found = site.data.ranged_weapons_list.data | where: "code", page.rangedWeapon -%}
