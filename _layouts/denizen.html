@@ -1,39 +1,52 @@
 ---
 layout: default
 ---
-<h1>{{page.title}}</h1>
-<p>{{page.tagline}}</p>
-<ul>
-  {%- for type in page.types -%}
-    <li>{{type}}</li>
-  {%- endfor -%}
-</ul>
+<article>
+  <header>
+    <h1 class="post-title">{{page.title}}</h1>
+    <p>{{page.tagline}}</p>
+    <ul>
+      {%- for type in page.types -%}
+        <li>{{type}}</li>
+      {%- endfor -%}
+    </ul>
+  </header>
 
-<ul>
-  <li><span>Movement</span> <span>{{ page.movement | formatStat: '"' }}</span></li>
-  <li><span>Attack</span> <span>{{ page.attack | formatStat }}</span></li>
-  <li><span>Support</span> <span>{{ page.support | formatStat }}</span></li>
-  <li><span>Save</span> <span>{{ page.save | formatStat: '+' }}</span></li>
-  <li><span>CR</span> <span>{{ page.commandRange | formatStat: '"' }}</span></li>
-  {%- if page.stamina != 0 -%}
-    <li><span>Stamina</span> <span>{{ page.stamina | formatStat }}</span></li>
-  {%- endif -%}
-  <li><span>Size</span> <span>{{ page.size | formatSize }}</span></li>
-</ul>
+  <div class="post-content">
+    <section>
+      <h2>Stats</h2>
+      <ul>
+        <li><span>Movement</span> <span>{{ page.movement | formatStat: '"' }}</span></li>
+        <li><span>Attack</span> <span>{{ page.attack | formatStat }}</span></li>
+        <li><span>Support</span> <span>{{ page.support | formatStat }}</span></li>
+        <li><span>Save</span> <span>{{ page.save | formatStat: '+' }}</span></li>
+        <li><span>CR</span> <span>{{ page.commandRange | formatStat: '"' }}</span></li>
+        {%- if page.stamina != 0 -%}
+          <li><span>Stamina</span> <span>{{ page.stamina | formatStat }}</span></li>
+        {%- endif -%}
+        <li><span>Size</span> <span>{{ page.size | formatSize }}</span></li>
+      </ul>
+    </section>
 
-<h2>Abilities</h2>
-<ul>
-  {%- for abilityChunks in page.abilities -%}
-    {%- assign found = site.data.abilities_list.data | where: "code", abilityChunks[0] -%}
-    {%- if found.size > 0 -%}
-      {%- assign ability = found | first -%}
+    <section>
+      <h2>Abilities</h2>
+      <ul>
+        {%- for abilityChunks in page.abilities -%}
+          {%- assign found = site.data.abilities_list.data | where: "code", abilityChunks[0] -%}
+          {%- if found.size > 0 -%}
+            {%- assign ability = found | first -%}
 
-      <li>{{ ability | formatAbility: abilityChunks[1], abilityChunks[2] }}</li>
-    {%- endif -%}
-  {%- endfor -%}
-</ul>
+            <li>{{ ability | formatAbility: abilityChunks[1], abilityChunks[2] }}</li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </section>
 
-{%- assign race = site.data.races_list.data | where: "code", page.race | first | formatRace -%}
-<p>{{ race }}</p>
+    <footer>
+      {%- assign race = site.data.races_list.data | where: "code", page.race | first | formatRace -%}
+      <p>{{ race }}</p>
 
-<p><span>Cost</span> <span>{{ page.cost | formatStat }}</span></p>
+      <p><span>Cost</span> <span>{{ page.cost | formatStat }}</span></p>
+    </footer>
+  </div>
+</article>
