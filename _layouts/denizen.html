@@ -12,7 +12,9 @@ layout: default
       </ul>
       <div>{{ page.size | formatSize }}</div>
     </div>
-    <blockquote>{{page.tagline}}</blockquote>
+    {%- if page.tagline.size > 0 -%}
+      <blockquote>{{page.tagline}}</blockquote>
+    {%- endif -%}
   </header>
 
   <div class="post-content">
