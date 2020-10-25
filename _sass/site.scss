@@ -56,3 +56,60 @@ $tap-size: 48px;
     }
   }
 }
+
+.denizen-card {
+  blockquote {
+    border: none;
+    padding: 0;
+    font-size: 1em;
+
+    &::before {
+      content: open-quote;
+    }
+
+    &::after {
+      content: close-quote;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  header {
+    margin-bottom: 1.5rem;
+
+    ul {
+      margin-left: 0;
+
+      > li {
+        display: inline;
+
+        + li {
+          &::before {
+            content: ' – ';
+          }
+        }
+      }
+    }
+
+    > * {
+      margin-bottom: .5rem;
+    }
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.25em;
+    font-weight: bold;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+  }
+}

@@ -1,15 +1,15 @@
 ---
 layout: default
 ---
-<article>
+<article class="denizen-card">
   <header>
     <h1 class="post-title">{{page.title}}</h1>
-    <p>{{page.tagline}}</p>
     <ul>
       {%- for type in page.types -%}
         <li>{{type}}</li>
       {%- endfor -%}
     </ul>
+    <blockquote>{{page.tagline}}</blockquote>
   </header>
 
   <div class="post-content">
