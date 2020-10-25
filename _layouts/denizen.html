@@ -4,28 +4,50 @@ layout: default
 <article class="denizen-card">
   <header>
     <h1 class="post-title">{{page.title}}</h1>
-    <ul>
-      {%- for type in page.types -%}
-        <li>{{type}}</li>
-      {%- endfor -%}
-    </ul>
+    <div class="details">
+      <ul>
+        {%- for type in page.types -%}
+          <li>{{type}}</li>
+        {%- endfor -%}
+      </ul>
+      <div>{{ page.size | formatSize }}</div>
+    </div>
     <blockquote>{{page.tagline}}</blockquote>
   </header>
 
   <div class="post-content">
     <section>
-      <h2>Stats</h2>
-      <ul>
-        <li><span>Movement</span> <span>{{ page.movement | formatStat: '"' }}</span></li>
-        <li><span>Attack</span> <span>{{ page.attack | formatStat }}</span></li>
-        <li><span>Support</span> <span>{{ page.support | formatStat }}</span></li>
-        <li><span>Save</span> <span>{{ page.save | formatStat: '+' }}</span></li>
-        <li><span>CR</span> <span>{{ page.commandRange | formatStat: '"' }}</span></li>
+      <h2 class="sr-only">Stats</h2>
+
+      <ul class="stat-block">
+        <li>
+          <div class="stat-name">Movement</div>
+          <div class="stat-value">{{ page.movement | formatStat: '"' }}</div>
+        </li>
+        <li>
+          <div class="stat-name">Attack</div>
+          <div class="stat-value">{{ page.attack | formatStat }}</div>
+        </li>
+        <li>
+          <div class="stat-name">Support</div>
+          <div class="stat-value">{{ page.support | formatStat }}</div>
+        </li>
+        <li>
+          <div class="stat-name">Save</div>
+          <div class="stat-value">{{ page.save | formatStat: '+' }}</div>
+        </li>
+        <li>
+          <div class="stat-name">CR</div>
+          <div class="stat-value">{{ page.commandRange | formatStat: '"' }}</div>
+        </li>
         {%- if page.stamina != 0 -%}
-          <li><span>Stamina</span> <span>{{ page.stamina | formatStat }}</span></li>
+          <li class="stamina">
+            <div class="stat-name">Stamina</div>
+            <div class="stat-value">{{ page.stamina | formatStat }}</div>
+          </li>
         {%- endif -%}
-        <li><span>Size</span> <span>{{ page.size | formatSize }}</span></li>
       </ul>
+
     </section>
 
     {%- if page.abilities.size > 0 -%}
