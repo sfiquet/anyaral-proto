@@ -136,6 +136,39 @@ $tap-size: 48px;
     }
   }
 
+  .weapon-box {
+    border: 1px solid $grey-color;
+    padding-top: $spacing-unit / 2;
+
+    h2 {
+      padding: 0 $spacing-unit / 2;
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    .weapon-content {
+      padding: $spacing-unit / 4;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      @media screen and (min-width: 400px){
+        justify-content: space-around;
+      }
+      @media screen and (min-width: 550px){
+        justify-content: space-evenly;
+      }
+
+      .flex-cell {
+        margin: $spacing-unit / 4;
+      }
+
+      ul {
+        margin-bottom: 0;
+      }
+    }
+  }
+
   footer {
     display: flex;
     justify-content: space-between;

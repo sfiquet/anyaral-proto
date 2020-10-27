@@ -64,20 +64,26 @@ layout: default
       {%- assign found = site.data.ranged_weapons_list.data | where: "code", page.rangedWeapon -%}
       {%- assign ranged = found | first -%}
 
-      <section>
+      <section class="weapon-box">
         <h2>{{ranged.name}}</h2>
-        <h3>Stats</h3>
-        <ul>
-          <li><span>Movement</span> <span>{{ ranged.movement | formatStat: '"' }}</span></li>
-          <li><span>Range</span> <span>{{ ranged.range | formatStat: '"' }}</span></li>
-          <li><span>Attack</span> <span>{{ ranged.attack | formatStat }}</span></li>
-        </ul>
+        <div class="weapon-content">
+          <div class="flex-cell">
+            <h3 class="sr-only">{{ranged.name}} Stats</h3>
+            <ul>
+              <li><span>Movement</span> <span>{{ ranged.movement | formatStat: '"' }}</span></li>
+              <li><span>Range</span> <span>{{ ranged.range | formatStat: '"' }}</span></li>
+              <li><span>Attack</span> <span>{{ ranged.attack | formatStat }}</span></li>
+            </ul>
+          </div>
 
-        {%- if ranged.abilities.size > 0 -%}
-          <h3>Abilities</h3>
-          {%- include abilities.html abilities=ranged.abilities -%}
-        {%- endif -%}
+          {%- if ranged.abilities.size > 0 -%}
+            <div class="flex-cell">
+              <h3 class="sr-only">{{ranged.name}} Abilities</h3>
+              {%- include abilities.html abilities=ranged.abilities -%}
+            </div>
+          {%- endif -%}
 
+        </div>
       </section>
     {%- endif -%}
 
