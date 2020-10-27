@@ -69,11 +69,14 @@ layout: default
         <div class="weapon-content">
           <div class="flex-cell">
             <h3 class="sr-only">{{ranged.name}} Stats</h3>
-            <ul>
-              <li><span>Movement</span> <span>{{ ranged.movement | formatStat: '"' }}</span></li>
-              <li><span>Range</span> <span>{{ ranged.range | formatStat: '"' }}</span></li>
-              <li><span>Attack</span> <span>{{ ranged.attack | formatStat }}</span></li>
-            </ul>
+            <div class="grid">
+              <div class="name">Movement</div>
+              <div class="value">{{ ranged.movement | formatStat: '"' }}</div>
+              <div class="name">Range</div>
+              <div class="value">{{ ranged.range | formatStat: '"' }}</div>
+              <div class="name">Attack</div>
+              <div class="value">{{ ranged.attack | formatStat }}</div>
+            </div>
           </div>
 
           {%- if ranged.abilities.size > 0 -%}
