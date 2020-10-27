@@ -17,84 +17,83 @@ layout: default
     {%- endif -%}
   </header>
 
-  <div class="post-content">
+  <section>
+    <h2 class="sr-only">Stats</h2>
+
+    <ul class="stat-block">
+      <li>
+        <div class="stat-name">Movement</div>
+        <div class="stat-value">{{ page.movement | formatStat: '"' }}</div>
+      </li>
+      <li>
+        <div class="stat-name">Attack</div>
+        <div class="stat-value">{{ page.attack | formatStat }}</div>
+      </li>
+      <li>
+        <div class="stat-name">Support</div>
+        <div class="stat-value">{{ page.support | formatStat }}</div>
+      </li>
+      <li>
+        <div class="stat-name">Save</div>
+        <div class="stat-value">{{ page.save | formatStat: '+' }}</div>
+      </li>
+      <li>
+        <div class="stat-name">CR</div>
+        <div class="stat-value">{{ page.commandRange | formatStat: '"' }}</div>
+      </li>
+      {%- if page.stamina != 0 -%}
+        <li class="stamina">
+          <div class="stat-name">Stamina</div>
+          <div class="stat-value">{{ page.stamina | formatStat }}</div>
+        </li>
+      {%- endif -%}
+    </ul>
+
+  </section>
+
+  {%- if page.abilities.size > 0 -%}
     <section>
-      <h2 class="sr-only">Stats</h2>
+      <h2>Abilities</h2>
 
-      <ul class="stat-block">
-        <li>
-          <div class="stat-name">Movement</div>
-          <div class="stat-value">{{ page.movement | formatStat: '"' }}</div>
-        </li>
-        <li>
-          <div class="stat-name">Attack</div>
-          <div class="stat-value">{{ page.attack | formatStat }}</div>
-        </li>
-        <li>
-          <div class="stat-name">Support</div>
-          <div class="stat-value">{{ page.support | formatStat }}</div>
-        </li>
-        <li>
-          <div class="stat-name">Save</div>
-          <div class="stat-value">{{ page.save | formatStat: '+' }}</div>
-        </li>
-        <li>
-          <div class="stat-name">CR</div>
-          <div class="stat-value">{{ page.commandRange | formatStat: '"' }}</div>
-        </li>
-        {%- if page.stamina != 0 -%}
-          <li class="stamina">
-            <div class="stat-name">Stamina</div>
-            <div class="stat-value">{{ page.stamina | formatStat }}</div>
-          </li>
-        {%- endif -%}
-      </ul>
-
+      {%- include abilities.html abilities=page.abilities -%}
     </section>
+  {%- endif -%}
 
-    {%- if page.abilities.size > 0 -%}
-      <section>
-        <h2>Abilities</h2>
+  {%- if page.rangedWeapon != "" -%}
+    {%- assign found = site.data.ranged_weapons_list.data | where: "code", page.rangedWeapon -%}
+    {%- assign ranged = found | first -%}
 
-        {%- include abilities.html abilities=page.abilities -%}
-      </section>
-    {%- endif -%}
-
-    {%- if page.rangedWeapon != "" -%}
-      {%- assign found = site.data.ranged_weapons_list.data | where: "code", page.rangedWeapon -%}
-      {%- assign ranged = found | first -%}
-
-      <section class="weapon-box">
-        <h2>{{ranged.name}}</h2>
-        <div class="weapon-content">
-          <div class="flex-cell">
-            <h3 class="sr-only">{{ranged.name}} Stats</h3>
-            <div class="grid">
-              <div class="name">Movement</div>
-              <div class="value">{{ ranged.movement | formatStat: '"' }}</div>
-              <div class="name">Range</div>
-              <div class="value">{{ ranged.range | formatStat: '"' }}</div>
-              <div class="name">Attack</div>
-              <div class="value">{{ ranged.attack | formatStat }}</div>
-            </div>
+    <section class="weapon-box">
+      <h2>{{ranged.name}}</h2>
+      <div class="weapon-content">
+        <div class="flex-cell">
+          <h3 class="sr-only">{{ranged.name}} Stats</h3>
+          <div class="grid">
+            <div class="name">Movement</div>
+            <div class="value">{{ ranged.movement | formatStat: '"' }}</div>
+            <div class="name">Range</div>
+            <div class="value">{{ ranged.range | formatStat: '"' }}</div>
+            <div class="name">Attack</div>
+            <div class="value">{{ ranged.attack | formatStat }}</div>
           </div>
-
-          {%- if ranged.abilities.size > 0 -%}
-            <div class="flex-cell">
-              <h3 class="sr-only">{{ranged.name}} Abilities</h3>
-              {%- include abilities.html abilities=ranged.abilities -%}
-            </div>
-          {%- endif -%}
-
         </div>
-      </section>
-    {%- endif -%}
 
-    <footer>
-      {%- assign race = site.data.races_list.data | where: "code", page.race | first | formatRace -%}
-      <p>{{ race }}</p>
+        {%- if ranged.abilities.size > 0 -%}
+          <div class="flex-cell">
+            <h3 class="sr-only">{{ranged.name}} Abilities</h3>
+            {%- include abilities.html abilities=ranged.abilities -%}
+          </div>
+        {%- endif -%}
 
-      <p><span>Cost</span> <span>{{ page.cost | formatStat }}</span></p>
-    </footer>
-  </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  <footer>
+    {%- assign race = site.data.races_list.data | where: "code", page.race | first | formatRace -%}
+    <div class="race">{{ race }}</div>
+
+    <div class="cost"><span>Cost</span> <span class="value">{{ page.cost | formatStat }}</span></div>
+  </footer>
+
 </article>

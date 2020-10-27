@@ -182,6 +182,22 @@ $tap-size: 48px;
   footer {
     display: flex;
     justify-content: space-between;
-    margin-top: 3rem;
+    align-items: center;
+    margin-top: $spacing-unit / 2;
+
+    .race {
+      font-size: 1.5em;
+    }
+
+    .cost {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .value {
+        font-size: 1.25em;
+      }
+    }
   }
 }
