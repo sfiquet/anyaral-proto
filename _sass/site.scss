@@ -58,6 +58,12 @@ $tap-size: 48px;
 }
 
 .denizen-card {
+  .box {
+    background-color: $grey-color-light;
+    border: 1px solid $grey-color;
+    padding: $spacing-unit / 2;
+  }
+
   blockquote {
     border: none;
     padding: 0;
@@ -114,8 +120,6 @@ $tap-size: 48px;
   }
 
   ul.stat-block {
-    border: 1px solid $grey-color;
-    padding: $spacing-unit / 2;
     width: max-content;
 
     li {
@@ -137,8 +141,7 @@ $tap-size: 48px;
   }
 
   .weapon-box {
-    border: 1px solid $grey-color;
-    padding-top: $spacing-unit / 2;
+    padding: $spacing-unit / 2 0 0 0;
 
     h2 {
       padding: 0 $spacing-unit / 2;

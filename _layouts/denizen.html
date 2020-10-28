@@ -2,7 +2,7 @@
 layout: default
 ---
 <article class="denizen-card">
-  <header>
+  <header class="box">
     <h1 class="post-title">{{page.title}}</h1>
     <div class="details">
       <ul>
@@ -20,7 +20,7 @@ layout: default
   <section>
     <h2 class="sr-only">Stats</h2>
 
-    <ul class="stat-block">
+    <ul class="box stat-block">
       <li>
         <div class="stat-name">Movement</div>
         <div class="stat-value">{{ page.movement | formatStat: '"' }}</div>
@@ -63,7 +63,7 @@ layout: default
     {%- assign found = site.data.ranged_weapons_list.data | where: "code", page.rangedWeapon -%}
     {%- assign ranged = found | first -%}
 
-    <section class="weapon-box">
+    <section class="box weapon-box">
       <h2>{{ranged.name}}</h2>
       <div class="weapon-content">
         <div class="flex-cell">
