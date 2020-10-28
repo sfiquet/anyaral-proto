@@ -17,47 +17,49 @@ layout: default
     {%- endif -%}
   </header>
 
-  <section>
-    <h2 class="sr-only">Stats</h2>
-
-    <ul class="box stat-block">
-      <li>
-        <div class="stat-name">Movement</div>
-        <div class="stat-value">{{ page.movement | formatStat: '"' }}</div>
-      </li>
-      <li>
-        <div class="stat-name">Attack</div>
-        <div class="stat-value">{{ page.attack | formatStat }}</div>
-      </li>
-      <li>
-        <div class="stat-name">Support</div>
-        <div class="stat-value">{{ page.support | formatStat }}</div>
-      </li>
-      <li>
-        <div class="stat-name">Save</div>
-        <div class="stat-value">{{ page.save | formatStat: '+' }}</div>
-      </li>
-      <li>
-        <div class="stat-name">CR</div>
-        <div class="stat-value">{{ page.commandRange | formatStat: '"' }}</div>
-      </li>
-      {%- if page.stamina != 0 -%}
-        <li class="stamina">
-          <div class="stat-name">Stamina</div>
-          <div class="stat-value">{{ page.stamina | formatStat }}</div>
-        </li>
-      {%- endif -%}
-    </ul>
-
-  </section>
-
-  {%- if page.abilities.size > 0 -%}
+  <div class="content">
     <section>
-      <h2>Abilities</h2>
+      <h2 class="sr-only">Stats</h2>
 
-      {%- include abilities.html abilities=page.abilities -%}
+      <ul class="box stat-block">
+        <li>
+          <div class="stat-name">Movement</div>
+          <div class="stat-value">{{ page.movement | formatStat: '"' }}</div>
+        </li>
+        <li>
+          <div class="stat-name">Attack</div>
+          <div class="stat-value">{{ page.attack | formatStat }}</div>
+        </li>
+        <li>
+          <div class="stat-name">Support</div>
+          <div class="stat-value">{{ page.support | formatStat }}</div>
+        </li>
+        <li>
+          <div class="stat-name">Save</div>
+          <div class="stat-value">{{ page.save | formatStat: '+' }}</div>
+        </li>
+        <li>
+          <div class="stat-name">CR</div>
+          <div class="stat-value">{{ page.commandRange | formatStat: '"' }}</div>
+        </li>
+        {%- if page.stamina != 0 -%}
+          <li class="stamina">
+            <div class="stat-name">Stamina</div>
+            <div class="stat-value">{{ page.stamina | formatStat }}</div>
+          </li>
+        {%- endif -%}
+      </ul>
+
     </section>
-  {%- endif -%}
+
+    {%- if page.abilities.size > 0 -%}
+      <section class="centred">
+        <h2>Abilities</h2>
+
+        {%- include abilities.html abilities=page.abilities -%}
+      </section>
+    {%- endif -%}
+  </div>
 
   {%- if page.rangedWeapon != "" -%}
     {%- assign found = site.data.ranged_weapons_list.data | where: "code", page.rangedWeapon -%}

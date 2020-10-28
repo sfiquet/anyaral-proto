@@ -127,6 +127,17 @@ $tap-size: 48px;
     font-size: 1.25;
   }
 
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .centred {
+      margin: 0 auto;
+      padding: 0 $spacing-unit / 2;
+    }
+  }
+
   ul.stat-block {
     width: max-content;
 
