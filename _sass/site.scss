@@ -83,6 +83,10 @@ $tap-size: 48px;
     margin-left: 0;
   }
 
+  section {
+    margin-bottom: $spacing-unit / 2;
+  }
+
   header {
     margin-bottom: $spacing-unit / 2;
 
@@ -138,27 +142,6 @@ $tap-size: 48px;
     }
   }
 
-  ul.stat-block {
-    width: max-content;
-
-    li {
-      display: flex;
-      align-items: center;
-
-      &.stamina {
-        padding-top: .5em;
-      }
-
-      .stat-name {
-        width: 9em;
-      }
-
-      .stat-value {
-        font-size: 1.125em;  
-      }
-    }
-  }
-
   .weapon-box {
     padding: $spacing-unit / 2 0 0 0;
 
@@ -183,16 +166,6 @@ $tap-size: 48px;
 
       .flex-cell {
         margin: $spacing-unit / 4;
-
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(2, max-content);
-          column-gap: .5em;
-
-          .value {
-            justify-self: center;
-          }
-        }
       }
 
       ul {
@@ -200,6 +173,28 @@ $tap-size: 48px;
       }
     }
   }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    column-gap: .5em;
+
+    .stat-name {
+      align-self: center;
+    }
+
+    .stat-value {
+      justify-self: center;
+
+      &.big {
+        font-size: 1.125em;
+      }
+    }
+
+    .stamina {
+      padding-top: .5em;
+    }
+}
 
   footer {
     display: flex;

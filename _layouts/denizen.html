@@ -18,38 +18,24 @@ layout: default
   </header>
 
   <div class="content">
-    <section>
+    <section class="box">
       <h2 class="sr-only">Stats</h2>
-
-      <ul class="box stat-block">
-        <li>
-          <div class="stat-name">Movement</div>
-          <div class="stat-value">{{ page.movement | formatStat: '"' }}</div>
-        </li>
-        <li>
-          <div class="stat-name">Attack</div>
-          <div class="stat-value">{{ page.attack | formatStat }}</div>
-        </li>
-        <li>
-          <div class="stat-name">Support</div>
-          <div class="stat-value">{{ page.support | formatStat }}</div>
-        </li>
-        <li>
-          <div class="stat-name">Save</div>
-          <div class="stat-value">{{ page.save | formatStat: '+' }}</div>
-        </li>
-        <li>
-          <div class="stat-name">CR</div>
-          <div class="stat-value">{{ page.commandRange | formatStat: '"' }}</div>
-        </li>
+      <div class="stat-grid">
+        <div class="stat-name">Movement</div>
+        <div class="stat-value big">{{ page.movement | formatStat: '"' }}</div>
+        <div class="stat-name">Attack</div>
+        <div class="stat-value big">{{ page.attack | formatStat }}</div>
+        <div class="stat-name">Support</div>
+        <div class="stat-value big">{{ page.support | formatStat }}</div>
+        <div class="stat-name">Save</div>
+        <div class="stat-value big">{{ page.save | formatStat: '+' }}</div>
+        <div class="stat-name">CR</div>
+        <div class="stat-value big">{{ page.commandRange | formatStat: '"' }}</div>
         {%- if page.stamina != 0 -%}
-          <li class="stamina">
-            <div class="stat-name">Stamina</div>
-            <div class="stat-value">{{ page.stamina | formatStat }}</div>
-          </li>
+          <div class="stamina stat-name">Stamina</div>
+          <div class="stamina stat-value big">{{ page.stamina | formatStat }}</div>
         {%- endif -%}
-      </ul>
-
+      </div>
     </section>
 
     {%- if page.abilities.size > 0 -%}
@@ -70,13 +56,13 @@ layout: default
       <div class="weapon-content">
         <div class="flex-cell">
           <h3 class="sr-only">{{ranged.name}} Stats</h3>
-          <div class="grid">
-            <div class="name">Movement</div>
-            <div class="value">{{ ranged.movement | formatStat: '"' }}</div>
-            <div class="name">Range</div>
-            <div class="value">{{ ranged.range | formatStat: '"' }}</div>
-            <div class="name">Attack</div>
-            <div class="value">{{ ranged.attack | formatStat }}</div>
+          <div class="stat-grid">
+            <div class="stat-name">Movement</div>
+            <div class="stat-value">{{ ranged.movement | formatStat: '"' }}</div>
+            <div class="stat-name">Range</div>
+            <div class="stat-value">{{ ranged.range | formatStat: '"' }}</div>
+            <div class="stat-name">Attack</div>
+            <div class="stat-value">{{ ranged.attack | formatStat }}</div>
           </div>
         </div>
 
