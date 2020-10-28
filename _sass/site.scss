@@ -107,16 +107,24 @@ $tap-size: 48px;
 
     > * {
       margin-bottom: $spacing-unit / 4;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 
-  h1 {
-    font-size: 1.5em;
+  h1, .race {
+    font-size: 1.75em;
+    letter-spacing: -1px;
   }
 
   h2 {
-    font-size: 1.25em;
-    font-weight: bold;
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 1.25;
   }
 
   ul.stat-block {
@@ -187,10 +195,6 @@ $tap-size: 48px;
     justify-content: space-between;
     align-items: center;
     margin-top: $spacing-unit / 2;
-
-    .race {
-      font-size: 1.5em;
-    }
 
     .cost {
       display: flex;
