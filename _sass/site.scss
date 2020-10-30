@@ -6,6 +6,11 @@ $tap-size: 48px;
   min-height: $tap-size;
 }
 
+.navlist-container {
+  display: flex;
+  justify-content: center;
+}
+
 .side-nav a, button {
   @include tap-target;
   display: flex;
@@ -24,10 +29,6 @@ summary {
   width:1px;
   height:1px;
   overflow:hidden;
-}
-
-.side-nav {
-  max-width: 20rem;
 }
 
 .hier-nav-list {
