@@ -10,7 +10,7 @@ permalink: /denizens/
 {%- assign races = site.data.races_list.data | where: "category", "game" -%}
 {%- assign racesByTitle = races | group_by_exp: "race", "race | formatRace" | sort: "name" -%}
 
-<h2 id="nav-label" class="sr-only">Denizen selection</h2>
+<div id="nav-label" class="sr-only">Denizen selection</div>
 <nav class="side-nav" role="navigation" aria-labelledby="nav-label">
   <ul class="hier-nav-list">
     {%- for raceGroup in racesByTitle -%}
@@ -19,7 +19,7 @@ permalink: /denizens/
       {%- if creatureGroup -%}
         <li>
           <details>
-            <summary><h3>{{raceGroup.name}}</h3></summary>
+            <summary><h2>{{raceGroup.name}}</h2></summary>
             <ul>
               {%- assign sortedCreatures = creatureGroup.items | sort: "name" -%}
               {%- for creature in sortedCreatures -%}

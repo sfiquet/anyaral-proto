@@ -46,7 +46,7 @@ summary {
       font-size: 1.25em;
       padding: calc((#{$tap-size} - #{$child-font-size} * #{$child-line-height})/2)  .25rem;
 
-      h3 {
+      h2 {
         display: inline; /* to align with summary marker */
         margin-bottom: 0;
         font-size: $child-font-size; /* size must be set on the summary for the marker to scale */
