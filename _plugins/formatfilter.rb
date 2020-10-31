@@ -10,7 +10,7 @@ module Jekyll
     def formatStat(input, postfix = '')
       special = {
         VALUE_SPECIAL => 'Special',
-        VALUE_DASH => '&mdash;',
+        VALUE_DASH => '<span class="sr-only">None</span><span aria-hidden="true">&mdash;</span>',
         VALUE_BLAST => 'Blast',
         VALUE_NO_UPPER_LIMIT => 'No upper limit',
         VALUE_UNDEFINED => 'Does not apply'
