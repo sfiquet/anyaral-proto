@@ -10,7 +10,7 @@ module Jekyll
     def formatStat(input, postfix = '')
       special = {
         VALUE_SPECIAL => 'Special',
-        VALUE_DASH => '<span class="sr-only">None</span><span aria-hidden="true">&mdash;</span>',
+        VALUE_DASH => '<span class="sr-only">None</span><span aria-hidden="true">&ndash;</span>',
         VALUE_BLAST => 'Blast',
         VALUE_NO_UPPER_LIMIT => 'No upper limit',
         VALUE_UNDEFINED => 'Does not apply'
@@ -40,7 +40,7 @@ module Jekyll
     end
 
     def formatRace(race)
-      race['culture'].empty? ? "#{race['theme']}" : "#{race['culture']} &mdash; #{race['theme']}"
+      race['culture'].empty? ? "#{race['theme']}" : "#{race['culture']} &ndash; #{race['theme']}"
     end
 
     def formatStaminaCost(cost)
